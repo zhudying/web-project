@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		* {
+			padding: 0;
+			margin: 0;
+		}
+		.map {
+			width: 1350px;
+			height: 520px;
+			margin: 0 auto;
+		}
+		.row {
+			overflow: hidden;
+		}
+		.fangge {
+			float: left;
+			width: 30px;
+			height: 30px;
+			border: 1px solid #ccc;
+			box-sizing: border-box;
+		}
+		.box {
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			margin-left: -100px;
+			margin-top: -100px;
+			color: red;
+			width: 200px;
+			height: 200px;
+			font-weight: bold;
+			background: rgba(0, 0, 0, .6);
+			text-align: center;
+			font-size: 30px;
+			line-height: 200px;
+			display: none;
+		}
+		.pause {
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			margin-left: -100px;
+			margin-top: -100px;
+			color: red;
+			width: 200px;
+			height: 200px;
+			font-weight: bold;
+			background: rgba(0, 0, 0, .6);
+			text-align: center;
+			font-size: 30px;
+			line-height: 200px;
+			display: none;
+		}
+		h2 {
+			font-size: 30px;
+			width: 150px;
+			height: 60px;
+			margin: 10px auto;
+			line-height: 60px;
+			text-align: center;
+		}
+		.fen {
+			position: absolute;
+			top: 34px;
+			left: 38px;
+			width: 200px;
+			height: 40px;
+			text-align: left;
+			line-height: 40px;
+			padding-left: 10px;
+			border: 1px solid #000;
+			background-color: red;
+		}
+	</style>
+</head>
+<body>
+	<h2>贪吃蛇游戏</h2>
+	<div class="box" id="box">GameOver!</div>
+	<div class="pause" id="pause">暂停!</div>
+	<script type="text/javascript" src="js/Block.js"></script>
+	<script type="text/javascript" src="js/Food.js"></script>
+	<script type="text/javascript" src="js/Game.js"></script>
+	<script type="text/javascript" src="js/Map.js"></script>
+	<script type="text/javascript" src="js/Snake.js"></script>
+	<script type="text/javascript" src="js/Sum.js"></script>
+	<script type="text/javascript">
+	// 获取box盒子
+	var box = document.getElementById("box");
+	// 获取暂停盒子
+	var pause = document.getElementById("pause");
+	// 初始化Block
+	var block = new Block("images/block.png");
+	// 初始化Fool
+	var food = new Food(7, 8, "images/food.jpg");
+	// 初始化Map
+	var map = new Map(18 ,45, 520, 1350);
+	// 定义snake图片
+	var snakeObj = {
+		// 蛇头部图片
+		head_pic: ["images/1.png", "images/2.png", "images/3.png", "images/4.png"],
+		// 蛇身体图片
+		body_pic: ["images/5.png"],
+		// 蛇尾图片
+		tail_pic: ["images/6.png", "images/7.png", "images/8.png", "images/9.png"]
+	}
+	// 初始化Snake
+	var snake = new Snake(snakeObj);
+	var sum = new Sum(200, 40);
+	// 初始化游戏
+	var g = new Game(block, food,  map, snake, box, pause, sum);
+	// console.log(g)
+	</script>
+</body>
+</html>
